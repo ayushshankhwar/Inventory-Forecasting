@@ -1,0 +1,115 @@
+{
+  "_documentation": "Firestore Database Schema for Inventory Forecasting System",
+
+  "collections": {
+    "users": {
+      "document_id": "Firebase Auth UID",
+      "fields": {
+        "uid": "string",
+        "email": "string",
+        "name": "string",
+        "role": "string (admin | analyst | viewer)",
+        "created_at": "timestamp"
+      },
+      "example": {
+        "uid": "abc123xyz",
+        "email": "user@example.com",
+        "name": "John Doe",
+        "role": "analyst",
+        "created_at": "2024-01-15T10:30:00Z"
+      }
+    },
+
+    "products": {
+      "document_id": "auto-generated",
+      "fields": {
+        "sku": "string (unique)",
+        "current_stock": "number",
+        "total_sales": "number",
+        "last_updated": "string (YYYY-MM-DD)",
+        "stockout_risk": "string (computed, optional)"
+      },
+      "example": {
+        "sku": "SKU001",
+        "current_stock": 250,
+        "total_sales": 1450,
+        "last_updated": "2024-02-10"
+      }
+    },
+
+    "forecasts": {
+      "document_id": "{SKU}_{horizon}d e.g. SKU001_30d",
+      "fields": {
+        "sku": "string",
+        "horizon_days": "number (7 | 15 | 30)",
+        "forecast": "array of {date, predicted, lower, upper}",
+        "created_by": "string (user UID)",
+        "created_at": "timestamp"
+      },
+      "example": {
+        "sku": "SKU001",
+        "horizon_days": 30,
+        "forecast": [
+          {"date": "2024-02-11", "predicted": 52.3, "lower": 44.1, "upper": 60.5},
+          {"date": "2024-02-12", "predicted": 49.7, "lower": 42.0, "upper": 57.4}
+        ],
+        "created_by": "abc123xyz",
+        "created_at": "2024-02-10T15:30:00Z"
+      }
+    },
+
+    "alerts": {
+      "document_id": "auto-generated",
+      "fields": {
+        "sku": "string",
+        "risk_level": "string (HIGH | MEDIUM | LOW)",
+        "current_stock": "number",
+        "forecasted_demand_30d": "number",
+        "days_until_stockout": "number | null",
+        "shortage_quantity": "number",
+        "message": "string",
+        "resolved": "boolean",
+        "alert_date": "string (YYYY-MM-DD)",
+        "created_at": "timestamp"
+      },
+      "example": {
+        "sku": "SKU002",
+        "risk_level": "HIGH",
+        "current_stock": 50,
+        "forecasted_demand_30d": 3900,
+        "days_until_stockout": 3,
+        "shortage_quantity": 3850,
+        "message": "CRITICAL: SKU002 will stock out in 3 days.",
+        "resolved": false,
+        "alert_date": "2024-02-10",
+        "created_at": "2024-02-10T15:30:00Z"
+      }
+    },
+
+    "vendors": {
+      "document_id": "auto-generated",
+      "fields": {
+        "name": "string",
+        "contact_email": "string",
+        "phone": "string",
+        "skus_supplied": "array of strings",
+        "lead_time_days": "number",
+        "created_at": "timestamp"
+      },
+      "example": {
+        "name": "TechSupply Co.",
+        "contact_email": "supply@techco.com",
+        "phone": "+91-9876543210",
+        "skus_supplied": ["SKU001", "SKU002"],
+        "lead_time_days": 7,
+        "created_at": "2024-01-01T00:00:00Z"
+      }
+    }
+  },
+
+  "firestore_indexes": {
+    "alerts": ["risk_level", "resolved", "created_at DESC"],
+    "forecasts": ["sku", "created_at DESC"],
+    "products": ["sku"]
+  }
+}

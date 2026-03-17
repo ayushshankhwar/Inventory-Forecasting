@@ -1,0 +1,29 @@
+# Firebase credentials (NEVER commit this)
+backend/firebase_credentials.json
+backend/.env
+
+# Frontend env
+frontend/.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+venv/
+.venv/
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+
+# Node
+frontend/node_modules/
+frontend/build/
+.npm/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Streamlit
+.streamlit/secrets.toml
