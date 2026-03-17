@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # 📦 Inventory Forecasting System
 ### AI-Powered Demand Forecasting for ERP Systems
 **IGNOU MCA Final Year Project**
@@ -205,7 +204,3 @@ inventory-forecasting/
 - **Project Type**: Final Year Project
 - **Subject Area**: Machine Learning, ERP Systems, Web Development
 - **Devoped By**: Ayush Shankhwar
-=======
-# Inventory-Forecasting
-Inventory Forecasting Using Machine Learning for ERP Systems
->>>>>>> e8ddc8913d5eacd491c78ceccd2e9484093b147a
