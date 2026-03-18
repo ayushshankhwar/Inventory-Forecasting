@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import { useState, useRef } from "react";
 import axiosInstance from "../api/axiosInstance";
 import { Upload, X, FileText, CheckCircle, AlertCircle, Loader } from "lucide-react";
 import toast from "react-hot-toast";
