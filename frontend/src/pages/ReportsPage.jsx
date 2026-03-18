@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axiosInstance from "../api/axiosInstance";
 import {
-  FileText, Download, BarChart2,
+  FileText, Download,
   TrendingUp, Package, AlertTriangle
 } from "lucide-react";
 import toast from "react-hot-toast";
 import {
-  RadarChart, PolarGrid, PolarAngleAxis, Radar,
   ResponsiveContainer, BarChart, Bar, XAxis, YAxis,
   CartesianGrid, Tooltip, Legend
 } from "recharts";

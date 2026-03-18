@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import {
-  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip,
-  ResponsiveContainer, Legend, ReferenceLine, Area, AreaChart
+  Line, XAxis, YAxis, CartesianGrid, Tooltip,
+  ResponsiveContainer, Legend, Area, AreaChart
 } from "recharts";
 import axiosInstance from "../api/axiosInstance";
-import { TrendingUp, Search, AlertCircle, Info } from "lucide-react";
+import { TrendingUp, Search, AlertCircle } from "lucide-react";
 import toast from "react-hot-toast";
 
 const HORIZONS = [
